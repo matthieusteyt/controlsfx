@@ -135,9 +135,11 @@ public class ActionUtils {
      * @param textBehavior Defines {@link ActionTextBehavior}
      * @return The {@link ButtonBase} that was bound to the {@link Action}.
      */
-    public static ButtonBase configureButton(final Action action, ButtonBase button, final ActionTextBehavior textBehavior) {
+    /* MS START EDIT*/
+    public static <T extends ButtonBase> T configureButton(final Action action, T button, final ActionTextBehavior textBehavior) {
         return configure(button, action, textBehavior);
     }
+    /* MS STOP EDIT*/
 
     /**
      * Takes the provided {@link Action} and binds the relevant properties to
@@ -148,9 +150,11 @@ public class ActionUtils {
      * @param button The {@link ButtonBase} that the {@link Action} should be bound to.
      * @return The {@link ButtonBase} that was bound to the {@link Action}.
      */
-    public static ButtonBase configureButton(final Action action, ButtonBase button) {
+    /* MS START EDIT*/
+    public static <T extends ButtonBase> T configureButton(final Action action, T button) {
         return configureButton(action, button, ActionTextBehavior.SHOW);
     }
+    /* MS STOP EDIT*/
 
     /**
      * Removes all bindings and listeners which were added when the supplied
