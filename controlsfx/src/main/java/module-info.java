@@ -62,9 +62,13 @@ module org.controlsfx.controls {
 
     exports impl.org.controlsfx.skin to org.controlsfx.samples;
 
-    // Required for reading CSS files for the CSS Tab
-    opens org.controlsfx.control to org.controlsfx.fxsampler;
-    opens org.controlsfx.control.tableview2 to org.controlsfx.fxsampler;
+    /* MS START EDIT*/
+    //Open css files
+    opens org.controlsfx.control;
+    opens org.controlsfx.control.spreadsheet;
+    opens org.controlsfx.control.tableview2;
+    opens org.controlsfx.control.textfield;
+    /* MS STOP EDIT*/
 
     uses org.controlsfx.glyphfont.GlyphFont;
     provides org.controlsfx.glyphfont.GlyphFont with org.controlsfx.glyphfont.FontAwesome;
