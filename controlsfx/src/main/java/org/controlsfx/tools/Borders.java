@@ -729,12 +729,22 @@ public final class Borders {
                 {
                     // add in the node we are wrapping
                     getChildren().add(n);
-                    
-                    
+
+
                     // if the title string is set, then also add in the title label
                     if (title != null) {
                         titleLabel = new Label(title);
-    
+                        /* MS START EDIT*/
+                        //Add style class so the title can be styled by css
+                        titleLabel.getStyleClass().add("border-title");
+                        //The title is layed out by custom layout, so set managed to false.
+                        //Otherwise its width is set in super.layoutChildren() AND in own layout code
+                        //--> this causes this BRANCH to set itself DIRTY (see setNeedsLayout())
+                        //when its width is changed in super.layoutChildren() and then again in titleLabel.resize(labelWidth, labelHeight)
+                        //--> result: layout code keeps running --> high CPU/GPU
+                        titleLabel.setManaged(false);
+                        /* MS STOP EDIT*/
+
                         // give the text a bit of space on the left...
                         titleLabel.setPadding(new Insets(0, 0, 0, TITLE_PADDING));
                         getChildren().add(titleLabel);
