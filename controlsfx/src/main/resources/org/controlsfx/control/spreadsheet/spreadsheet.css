@@ -149,6 +149,7 @@ CellView >TextArea .scroll-bar:horizontal {
 .selection-rectangle{
     -fx-fill : transparent;
     -fx-stroke : black;
+    -fx-stroke-type: inside;
     -fx-stroke-width : 2;
 }
 

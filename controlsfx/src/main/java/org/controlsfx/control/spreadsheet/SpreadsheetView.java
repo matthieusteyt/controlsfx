@@ -79,6 +79,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.event.WeakEventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.ContextMenu;
@@ -643,7 +644,15 @@ public class SpreadsheetView extends Control{
      **************************************************************************/
     @Override
     protected void layoutChildren() {
-        super.layoutChildren();
+        /* MS START EDIT*/
+        //Call to super will layout the installed skin via resizeRelocate(0, 0, getWidth(), getHeight()), see code in Control
+        //--> this is probably faulty (old) code in control (pre-skin refactoring of javafx8) as it does not take the insets into account
+        //--> here below the child is layed out again, now with the insets. This triggers the setting of a different width which triggers a
+        //reapply of the layout (see widthChanged on region). --> layout keeps looping --> high cpu & gpu usage, with risk of possible crash.
+        //--> solution -> remove the call to the super method, it seems redundant anyway as the node of the installed
+        // skin(SpreadsheetGridView) is layed out as its child anyway
+//        super.layoutChildren();
+        /* MS STOP EDIT*/
         Pos pos = Pos.TOP_LEFT;
         double width = getWidth();
         double height = getHeight();
