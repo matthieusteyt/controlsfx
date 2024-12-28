@@ -38,10 +38,11 @@ module org.controlsfx.controls {
     requires javafx.base;
     requires java.net.http;
 
+    //MS DISABLE overridden implementations (only export them to samples)
     exports org.controlsfx.control;
     exports org.controlsfx.control.action;
     exports org.controlsfx.control.cell;
-    exports org.controlsfx.control.decoration;
+    exports org.controlsfx.control.decoration to org.controlsfx.samples;
     exports org.controlsfx.control.spreadsheet;
     exports org.controlsfx.control.table;
     exports org.controlsfx.control.tableview2;
@@ -58,8 +59,8 @@ module org.controlsfx.controls {
     exports org.controlsfx.property;
     exports org.controlsfx.property.editor;
     exports org.controlsfx.tools;
-    exports org.controlsfx.validation;
-    exports org.controlsfx.validation.decoration;
+    exports org.controlsfx.validation to org.controlsfx.samples;
+    exports org.controlsfx.validation.decoration to org.controlsfx.samples;
 
     exports impl.org.controlsfx.skin to org.controlsfx.samples;
 
